@@ -1,5 +1,5 @@
-import DOCS from './help.html
- 
+import DOCS from './help.html'
+
 addEventListener("fetch", (event) => {
   event.passThroughOnException();
   event.respondWith(handleRequest(event.request));
@@ -19,7 +19,7 @@ const routes = {
   "ecr.mickey3721.xyz": "https://public.ecr.aws",
 
   // staging
-  "docker-staging.libcuda.so": dockerHub,
+  "docker-staging.lixd.xyz": dockerHub,
 };
 
 function routeByHosts(host) {
@@ -45,15 +45,15 @@ async function handleRequest(request) {
       }
     );
   }
- // return docs
- if (url.pathname === "/") {
-   return new Response(DOCS, {
-     status: 200,
-     headers: {
-       "content-type": "text/html"
-     }
-   });
- }
+  // return docs
+  if (url.pathname === "/") {
+    return new Response(DOCS, {
+      status: 200,
+      headers: {
+        "content-type": "text/html"
+      }
+    });
+  }
   const isDockerHub = upstream == dockerHub;
   const authorization = request.headers.get("Authorization");
   if (url.pathname == "/v2/") {
